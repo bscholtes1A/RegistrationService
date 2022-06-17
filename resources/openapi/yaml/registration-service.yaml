@@ -17,6 +17,22 @@ paths:
       responses:
         "204":
           description: No content
+  /registry/participant/{name}:
+    delete:
+      tags:
+      - Registry
+      description: Delete a dataspace participant.
+      operationId: deleteParticipant
+      parameters:
+      - name: name
+        in: path
+        description: Participant name
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          description: No content
   /registry/participants:
     get:
       tags:

@@ -14,12 +14,12 @@
 
 package org.eclipse.dataspaceconnector.registration.api;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.dataspaceconnector.registration.store.model.Participant;
 import org.eclipse.dataspaceconnector.registration.store.spi.ParticipantStore;
 import org.eclipse.dataspaceconnector.spi.monitor.Monitor;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Registration service for dataspace participants.
@@ -42,6 +42,11 @@ public class RegistrationService {
     public List<Participant> listParticipants() {
         monitor.info("List all participants of the dataspace.");
         return new ArrayList<>(participantStore.listParticipants());
+    }
+
+    public void deleteParticipant(String name) {
+        monitor.info("Delete participant with name: " + name);
+        participantStore.deleteParticipant(name);
     }
 
     public void addParticipant(Participant participant) {

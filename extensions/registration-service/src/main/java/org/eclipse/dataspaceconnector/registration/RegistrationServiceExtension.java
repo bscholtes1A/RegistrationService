@@ -39,7 +39,7 @@ public class RegistrationServiceExtension implements ServiceExtension {
     public void initialize(ServiceExtensionContext context) {
         var monitor = context.getMonitor();
         var registrationService = new RegistrationService(monitor, participantStore);
-        webService.registerResource(new RegistrationApiController(registrationService));
+        webService.registerResource(new RegistrationApiController(registrationService, monitor));
     }
 
     @Provider(isDefault = true)

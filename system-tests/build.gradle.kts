@@ -20,8 +20,10 @@ val awaitility: String by project
 val jupiterVersion: String by project
 val assertj: String by project
 val faker: String by project
+val jacksonVersion: String by project
 
 dependencies {
+    implementation("com.fasterxml.jackson.core:jackson-annotations:${jacksonVersion}")
     testImplementation(project(":rest-client"))
     testImplementation("org.assertj:assertj-core:${assertj}")
     testImplementation("org.junit.jupiter:junit-jupiter-api:${jupiterVersion}")

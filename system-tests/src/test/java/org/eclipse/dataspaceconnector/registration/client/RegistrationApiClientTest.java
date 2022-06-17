@@ -14,12 +14,12 @@
 
 package org.eclipse.dataspaceconnector.registration.client;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.eclipse.dataspaceconnector.registration.client.IntegrationTestUtils.createParticipant;
+
 import org.eclipse.dataspaceconnector.registration.client.api.RegistryApi;
 import org.eclipse.dataspaceconnector.registration.client.models.Participant;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.eclipse.dataspaceconnector.registration.client.IntegrationTestUtils.createParticipant;
 
 @IntegrationTest
 public class RegistrationApiClientTest {
@@ -38,5 +38,10 @@ public class RegistrationApiClientTest {
 
         assertThat(api.listParticipants())
                 .contains(participant);
+
+        api.deleteParticipant(participant.getName());
+
+        assertThat(api.listParticipants())
+                .doesNotContain(participant);
     }
 }

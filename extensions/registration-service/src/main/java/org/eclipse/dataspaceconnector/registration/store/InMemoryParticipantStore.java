@@ -14,13 +14,13 @@
 
 package org.eclipse.dataspaceconnector.registration.store;
 
-import org.eclipse.dataspaceconnector.registration.store.model.Participant;
-import org.eclipse.dataspaceconnector.registration.store.spi.ParticipantStore;
-
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.eclipse.dataspaceconnector.registration.store.model.Participant;
+import org.eclipse.dataspaceconnector.registration.store.spi.ParticipantStore;
 
 /**
  * In-memory store for dataspace participants.
@@ -32,6 +32,11 @@ public class InMemoryParticipantStore implements ParticipantStore {
     @Override
     public List<Participant> listParticipants() {
         return new ArrayList<>(storage.values());
+    }
+
+    @Override
+    public void deleteParticipant(String name) {
+        storage.remove(name);
     }
 
     @Override

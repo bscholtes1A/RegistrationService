@@ -14,12 +14,14 @@
 
 package org.eclipse.dataspaceconnector.registration.store.spi;
 
-import org.eclipse.dataspaceconnector.registration.store.model.Participant;
-
 import java.util.List;
+
+import org.eclipse.dataspaceconnector.registration.store.model.Participant;
 
 public interface ParticipantStore {
     List<Participant> listParticipants();
+
+    void deleteParticipant(String name);
 
     void addParticipant(Participant participant);
 }
